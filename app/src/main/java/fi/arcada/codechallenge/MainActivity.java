@@ -11,6 +11,8 @@ import android.content.SharedPreferences;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import static fi.arcada.codechallenge.Statistics.movingAvg;
+
 // Denna MainActivity håller koll på hur många gånger man öppnat appen
 // Den säger även två olika meddelanden - En vid start och en efter man varit i settings
 public class MainActivity extends AppCompatActivity {
@@ -71,10 +73,12 @@ public class MainActivity extends AppCompatActivity {
         // Vi visar vår fina counter i vår textView
         appCountTextView.setText(String.valueOf(appCounter));
 
-
-
         // Vår clickListener för settings
         settingsButton.setOnClickListener(v -> openSettings());
+
+
+        double [] temperature = {17.5,18.7,19.5,22.5,24,15.8,12.9,13.6,10};
+        movingAvg(temperature,4);
     }
 
     @Override
